@@ -19,7 +19,6 @@ document.addEventListener("scroll", function () {
   if (!ticking) {
     requestAnimationFrame(() => {
       let scroll = window.pageYOffset;
-      console.log("🚀 ~ requestAnimationFrame ~ scroll:", scroll);
       let scrollDiv10 = scroll / 10;
       let scrollDiv50 = scroll / 50;
       let scrollDivTop = scroll / topHeight;
@@ -39,7 +38,7 @@ document.addEventListener("scroll", function () {
           left: `${scrollDiv10}%`,
         });
 
-        h1.style.top = `${120 - scrollDiv10}vh`;
+        h1.style.top = `${110 - scrollDiv10}vh`;
       } else {
         Object.assign(header.style, {
           zIndex: "12",
@@ -76,7 +75,7 @@ document.addEventListener("scroll", function () {
 document.addEventListener("DOMContentLoaded", () => {
   let startTime = Date.now();
   const duration = 3000;
-  const maxScroll = window.innerHeight * 0.75;
+  const maxScroll = window.innerHeight * 0.7;
   const interval = 20;
 
   function easeInOut(t) {
@@ -87,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const elapsedTime = Date.now() - startTime;
     let progress = Math.min(elapsedTime / duration, 1); // Normalizamos entre 0 y 1
 
-    progress = easeInOut(progress); // Aplicamos easing
+    // progress = easeInOut(progress); // Aplicamos easing
 
     window.scrollTo(0, maxScroll * progress); // Desplazamos suavemente
 

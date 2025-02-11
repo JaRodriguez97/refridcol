@@ -25,7 +25,7 @@ header {
   z-index: 8;
   display: flex;
   box-shadow: 5px 5px 5px #1641944d;
-  transition: all 300ms;
+  transition: all 200ms;
   /* transform: scale(2); */
 }
 
@@ -115,12 +115,17 @@ nav ul li a:hover {
   position: absolute;
   left: 0;
   right: 0;
-  top: 120vh;
+  top: 110vh;
+  width: 70vw;
   margin: 0 auto;
   font-size: 5em;
   text-align: center;
   color: #fff;
   text-shadow: 5px 5px 0 #fff8;
+}
+
+.zoom h1 span {
+  text-shadow: 5px 5px 0 #164194;
 }
 
 .zoom #layer1 {
@@ -130,6 +135,7 @@ nav ul li a:hover {
   width: 100%;
   transform: translateX(-50%);
   z-index: 10;
+  transition: all 200ms;
 }
 
 .zoom #layer2 {
@@ -138,6 +144,7 @@ nav ul li a:hover {
   bottom: 0;
   right: 0;
   z-index: 9;
+  transition: all 200ms;
 }
 
 .content {
@@ -238,7 +245,7 @@ nav ul li a:hover {
   height: 80px;
   /* background: var(--clr);
   fill: #fff; */
-    -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   fill: #000;
   border-radius: 50%;
