@@ -74,21 +74,27 @@ document.addEventListener("scroll", function () {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  let startTime;
-  const duration = 5000; // 5 segundos en milisegundos
-  const maxScroll = window.innerHeight * 0.75; // 75vh en píxeles
+  let startTime = Date.now();
+  const duration = 3000;
+  const maxScroll = window.innerHeight * 0.75;
+  const interval = 20;
 
-  function autoScroll(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsedTime = timestamp - startTime;
-    const progress = Math.min(elapsedTime / duration, 1); // Normalizamos el tiempo
+  function easeInOut(t) {
+    return (1 - Math.cos(Math.PI * t)) / 2; // Suavizado suave
+  }
 
-    window.scrollTo(0, maxScroll * progress); // Desplazamos proporcionalmente
+  function autoScroll() {
+    const elapsedTime = Date.now() - startTime;
+    let progress = Math.min(elapsedTime / duration, 1); // Normalizamos entre 0 y 1
+
+    progress = easeInOut(progress); // Aplicamos easing
+
+    window.scrollTo(0, maxScroll * progress); // Desplazamos suavemente
 
     if (progress < 1) {
-      requestAnimationFrame(autoScroll);
+      setTimeout(() => autoScroll(), interval); // Llamamos de nuevo después de 16ms
     }
   }
 
-  requestAnimationFrame(autoScroll);
+  setTimeout(() => autoScroll(), 1000);
 });
