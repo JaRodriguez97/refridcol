@@ -1,0 +1,252 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Alegreya", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  top: 110vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-height: 100px;
+  width: 70px;
+  padding: 10px 100px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 8;
+  display: flex;
+  box-shadow: 5px 5px 5px #1641944d;
+  transition: all 300ms;
+  /* transform: scale(2); */
+}
+
+header > a {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+header > a img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  object-fit: cover;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 12;
+  transition: all 300ms;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+}
+
+nav ul li {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+nav ul li a {
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  transition: 300ms;
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+}
+
+.zoom {
+  width: 100%;
+  height: 130vh;
+  position: relative;
+  overflow: hidden;
+  background: url(./img/bg.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 120%;
+  background-position: top;
+  transition: all 0.3s ease-out;
+}
+
+.zoom::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 11;
+  background: linear-gradient(transparent, #fff);
+}
+
+.zoom h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 120vh;
+  margin: 0 auto;
+  font-size: 5em;
+  text-align: center;
+  color: #fff;
+  text-shadow: 5px 5px 0 #fff8;
+}
+
+.zoom #layer1 {
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+  width: 100%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.zoom #layer2 {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+}
+
+.content {
+  padding: 100px;
+}
+
+.content h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  line-height: 3em;
+}
+
+.content p {
+  font-size: 1.1em;
+  text-align: justify;
+}
+
+.menuRS {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  z-index: 15;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuRS .toggle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25),
+    0 25px 20px rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menuRS .toggle svg {
+  position: absolute;
+  opacity: 0;
+  transition: 500ms;
+  width: 40px;
+  height: 40px;
+  fill: #000;
+}
+
+.menuRS .toggle svg:nth-child(1) {
+  opacity: 1;
+  transform: rotate(360deg);
+}
+
+.menuRS.active .toggle svg:nth-child(1) {
+  opacity: 0;
+  transform: rotate(0deg);
+}
+
+.menuRS.active .toggle svg:nth-child(2) {
+  opacity: 1;
+  transform: rotate(360deg);
+}
+
+.menuRS li {
+  position: absolute;
+  left: 0;
+  list-style: none;
+  transform-origin: 100px;
+  transition: 500ms;
+  transform: rotate(calc(360deg / 4 * var(--i)));
+  scale: 0;
+  overflow: hidden;
+  transition-delay: calc(0.05s * var(--i));
+}
+
+.menuRS.active li {
+  scale: 1;
+}
+
+.menuRS.active li:hover {
+  scale: 1.1;
+}
+
+.menuRS li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  /* background: var(--clr);
+  fill: #fff; */
+    -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  fill: #000;
+  border-radius: 50%;
+  transform: rotate(calc(360deg / -4 * var(--i)));
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+.menuRS li a svg {
+  width: 40px;
+  height: 40px;
+}
