@@ -1,0 +1,538 @@
+/* Reset CSS de Tailwind (Preflight) */
+
+/* Box sizing y márgenes/paddings en 0 */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: currentColor;
+}
+
+/* Tipografía por defecto */
+body {
+  line-height: 1.5;
+  font-family: inherit;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
+
+/* Encabezados sin estilos predeterminados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Listas sin estilos */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Imágenes como elementos de bloque y alineadas */
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+}
+
+/* Botones sin estilos por defecto */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* Quitar la apariencia nativa de botones y selects en algunos navegadores */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Quitar estilos del foco en algunos navegadores */
+[role="button"],
+button {
+  cursor: pointer;
+}
+
+/* Normalización de enlaces */
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+p {
+  text-wrap: balance;
+}
+
+/* Quitar estilos predeterminados de tablas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Normalizar textarea */
+textarea {
+  resize: vertical;
+}
+
+/* Ocultar elementos con hidden */
+[hidden] {
+  display: none;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* ===== Contenedor Principal ===== */
+.container {
+  width: 100%;
+  max-width: 1312px;
+}
+
+/* ===== Header ===== */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 64px;
+}
+
+/* ===== Navegación ===== */
+.nav {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #4b5563;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: black;
+}
+
+/* ===== Dropdown (Menú desplegable) ===== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: none;
+  color: #4b5563;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  color: black;
+}
+
+.dropdown-content {
+  position: absolute;
+  left: 0;
+  margin-top: 8px;
+  width: 150px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #4b5563;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f3f4f6;
+}
+
+/* ===== Logo y Botón de Menú ===== */
+.logo {
+  display: flex;
+  height: 50px;
+}
+
+.menu-btn-container {
+  width: 100%;
+  display: flex;
+}
+
+.menu-btn {
+  background-color: black;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: 80px;
+  height: 40px;
+}
+
+.menu-btn:hover {
+  opacity: 0.8;
+}
+
+/* ===== Contenido Principal ===== */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 64px;
+  height: 90svh;
+  max-height: 900px;
+  overflow-y: hidden;
+}
+
+.text-content {
+  width: 50%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 60vh;
+}
+
+.text-content h1 {
+  font-weight: bold;
+  width: 19ch;
+  font-size: 48px;
+  line-height: 60px;
+}
+
+.text-content p {
+  color: #4b5563;
+  width: 57ch;
+}
+
+/* ===== Botones ===== */
+.main-content .buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.primary {
+  background-color: black;
+  color: white;
+}
+
+.primary:hover {
+  opacity: 0.8;
+}
+
+.secondary {
+  border: 2px solid black;
+  color: black;
+  background: none;
+}
+
+.secondary:hover {
+  background-color: #f3f4f6;
+}
+
+/* ===== Galería de Imágenes ===== */
+
+.image-grid {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  gap: 16px;
+}
+
+.second-grid,
+.first-grid {
+  display: flex;
+  gap: 16px;
+  width: 50%;
+}
+
+.first-grid {
+  flex-direction: column-reverse;
+  animation: to-top 25s infinite ease-in-out alternate;
+}
+
+@keyframes to-top {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.second-grid {
+  flex-direction: column;
+  animation: to-bottom 25s infinite ease-in-out alternate;
+}
+
+@keyframes to-bottom {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.image-grid img {
+  height: 340px;
+  aspect-ratio: 85 / 100;
+  object-fit: cover;
+}
+
+/*  ==== Section caracteristicas */
+
+section.container {
+  padding: 112px 64px;
+  display: flex;
+  gap: 80px;
+  min-height: 100svh;
+  height: 864px;
+}
+
+section .text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 16.5px;
+  width: 100% !important;
+}
+
+.features {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  align-items: center;
+}
+
+.feature {
+  text-align: left;
+  width: 50%;
+}
+
+.feature h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.feature p {
+  width: 100% !important;
+}
+
+section .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid black;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: black;
+}
+
+.btn-outline:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-primary {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.image-container {
+  width: 50%;
+  display: flex;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 616px;
+  height: 100%;
+  max-height: 640px;
+  object-fit: cover;
+}
+
+/* ===== Banner Action ===== */
+
+section.container.column {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titulo {
+  font-size: 40px;
+  font-weight: bold;
+  width: 35ch;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  height: 300px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+}
+
+.icono {
+  font-size: 2.5rem;
+}
+
+.subtitulo {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.enlace {
+  font-weight: 600;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.enlace:hover {
+  text-decoration: underline;
+}
+
+.second-text-content {
+  gap: 32px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.second-text-content .title {
+  width: 26ch;
+}
+
+.second-text-content ul {
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.second-text-content ul i {
+  font-size: 1em;
+  margin-right: 15px;
+}
+
+/* ===== Diseño Responsivo ===== */
+@media (min-width: 1024px) {
+  .main-content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  section.container.column {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 991px) {
+  .image-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* @media (min-width: 768px) {
+  .grid {
+    flex-direction: column;
+  }
+} */
