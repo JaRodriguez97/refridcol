@@ -1,15 +1,104 @@
-* {
+/* Reset completo inspirado en Tailwind's Preflight */
+
+/* Eliminar márgenes, paddings y ajustar box-sizing */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
-  font-family: "Alegreya", serif;
+  padding: 0;
+  border: 0;
+}
+
+/* Ajustes en el documento */
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  scroll-behavior: smooth;
   font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
-  scroll-behavior: smooth;
 }
 
-header {
+/* Reset de estilos del body */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: inherit;
+  background-color: #fff;
+  color: #1f2937; /* text-gray-800 */
+}
+
+/* Encabezados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Textos y enlaces */
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* Listas */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Imágenes */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Botones */
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+/* Campos de formulario */
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Ajustes para tablas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Ocultar elementos con hidden */
+[hidden] {
+  display: none;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////// */
+
+#header {
   position: fixed;
   top: 110vh;
   left: 0;
@@ -17,6 +106,7 @@ header {
   margin: 0 auto;
   max-height: 100px;
   width: 70px;
+  max-width: 1200px;
   padding: 10px 100px;
   border-radius: 50px;
   background: rgba(255, 255, 255, 0.3);
@@ -24,18 +114,17 @@ header {
   backdrop-filter: blur(10px);
   z-index: 8;
   display: flex;
-  box-shadow: 5px 5px 5px #1641944d;
+  box-shadow: 5px 5px 5px #50aae84d;
   transition: all 200ms;
-  /* transform: scale(2); */
 }
 
-header > a {
+#header > a {
   position: relative;
   width: 50px;
   height: 50px;
 }
 
-header > a img {
+#header > a img {
   width: 100%;
   height: 100%;
   position: relative;
@@ -125,7 +214,20 @@ nav ul li a:hover {
 }
 
 .zoom h1 span {
-  text-shadow: 5px 5px 0 #164194;
+  text-shadow: 5px 5px 0 #50aae8;
+}
+
+.zoom .CTA {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 120vh;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  z-index: 11;
+  display: flex;
+  gap: 20px;
 }
 
 .zoom #layer1 {
@@ -256,4 +358,192 @@ nav ul li a:hover {
 .menuRS li a svg {
   width: 40px;
   height: 40px;
+}
+/* ////////////////////////////////////////////////////////////////////////////////// */
+
+/* Estilos para la sección de estadísticas */
+.stats {
+  background-color: #ffffff;
+  padding: 2rem 0;
+}
+
+.stats__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .stats__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stats__item {
+  text-align: center;
+}
+
+.stats__item-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.stats__item-description {
+  color: #4b5563;
+}
+
+/* Estilos para la sección de soluciones */
+.solutions {
+  background-color: #50aae8;
+  padding: 3rem 0;
+}
+
+.solutions__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.solutions__header {
+  text-align: left;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.solutions__subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.solutions__title {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.solutions__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .solutions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.solutions__card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.solutions__icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.solutions__icon i {
+  font-size: 1.875rem;
+  color: #50aae8;
+}
+
+.solutions__card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.solutions__card-description {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.solutions__link {
+  color: #50aae8;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.solutions__link:hover {
+  text-decoration: underline;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////// */
+/* Estilos generales de la sección */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Título de la sección */
+.section__title {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: bold;
+  color: #1f2937; /* text-gray-800 */
+  margin-bottom: 2rem;
+  width: 30ch;
+}
+
+@media (min-width: 768px) {
+  .section__title {
+    font-size: 3rem; /* md:text-5xl */
+    width: 35ch;
+  }
+}
+
+/* Botón de contacto */
+.section__button {
+  background-color: #50aae8;
+  color: #ffffff; /* text-white */
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px; /* rounded-full */
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 3rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Galería de imágenes */
+.section__gallery {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.gallery__wrapper {
+  display: inline-flex;
+  gap: 1rem; /* space-x-4 */
+  animation: scroll 20s linear infinite; /* Ajusta la duración según prefieras */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Imágenes dentro de la galería */
+.gallery__image {
+  width: 12rem; /* w-48 */
+  height: 16rem; /* h-64 */
+  object-fit: cover; /* object-cover */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
 }

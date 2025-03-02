@@ -8,21 +8,18 @@ let zoom = document.querySelector(".zoom");
 let h1 = document.querySelector("h1");
 let toggle = document.querySelector(".toggle");
 let menuRS = document.querySelector(".menuRS");
-
 let ticking = false;
+let memberScroll = 0;
+const duration = 1000; // Duración del scroll en milisegundos
+const maxScroll = window.innerHeight * 0.6; // Altura máxima a la que quieres llegar
+let velocity = maxScroll / duration;
 
-toggle.onclick = function () {
-  menuRS.classList.toggle("active");
-};
-
-document.addEventListener("scroll", function () {
+function scroll() {
   if (!ticking) {
     requestAnimationFrame(() => {
-      let scroll = window.pageYOffset;
+      let scroll = window.scrollY;
       let scrollDiv10 = scroll / 10;
-      let scrollDiv50 = scroll / 50;
-      let scrollDivTop = scroll / topHeight;
-      let scaleHeader = Math.max(1, 2 - scrollDivTop);
+      let scrollnav = scroll / 430;
 
       if (scroll < topHeight) {
         Object.assign(header.style, {
@@ -30,12 +27,11 @@ document.addEventListener("scroll", function () {
           width: "70px",
           padding: "10px",
           zIndex: "8",
-          transform: `scale(${scaleHeader})`,
         });
 
         Object.assign(nav.style, {
           width: `${100 - scrollDiv10}%`,
-          left: `${scrollDiv10}%`,
+          left: `${(scroll / 10) * scrollnav}%`,
         });
 
         h1.style.top = `${110 - scrollDiv10}vh`;
@@ -59,7 +55,7 @@ document.addEventListener("scroll", function () {
       Object.assign(layer2.style, {
         width: `${100 + scrollDiv10}%`,
         bottom: `${-scrollDiv10}%`,
-        left: `${scrollDiv50}%`,
+        left: `${scrollDiv10}%`,
       });
 
       let scale = 100 + scroll / 5;
@@ -70,30 +66,34 @@ document.addEventListener("scroll", function () {
 
     ticking = true;
   }
-});
+}
+let count = 0;
+function autoScroll() {
+  count++;
+  if (
+    window.scrollY >= Math.round(memberScroll) &&
+    memberScroll >= 10 &&
+    count % 3 === 0
+  )
+    return setTimeout(() => autoScroll(), 30);
 
-document.addEventListener("DOMContentLoaded", () => {
-  let startTime = Date.now();
-  const duration = 3000;
-  const maxScroll = window.innerHeight * 0.7;
-  const interval = 20;
+  let progress = 100;
 
-  function easeInOut(t) {
-    return (1 - Math.cos(Math.PI * t)) / 2; // Suavizado suave
-  }
+  const currentScroll = velocity * progress + window.scrollY;
 
-  function autoScroll() {
-    const elapsedTime = Date.now() - startTime;
-    let progress = Math.min(elapsedTime / duration, 1); // Normalizamos entre 0 y 1
+  window.scrollTo(0, currentScroll);
 
-    // progress = easeInOut(progress); // Aplicamos easing
+  memberScroll = currentScroll;
 
-    window.scrollTo(0, maxScroll * progress); // Desplazamos suavemente
+  if (maxScroll > currentScroll) setTimeout(() => autoScroll(), 30);
+}
 
-    if (progress < 1) {
-      setTimeout(() => autoScroll(), interval); // Llamamos de nuevo después de 16ms
-    }
-  }
+toggle.onclick = function () {
+  menuRS.classList.toggle("active");
+};
 
-  setTimeout(() => autoScroll(), 1000);
-});
+document.addEventListener("scroll", () => scroll());
+
+document.addEventListener("DOMContentLoaded", () =>
+  setTimeout(() => autoScroll(), 1500)
+);
