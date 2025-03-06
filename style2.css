@@ -14,6 +14,8 @@
 
 /* Tipografía por defecto */
 body {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2em;
   line-height: 1.5;
   font-family: inherit;
   text-size-adjust: 100%;
@@ -116,6 +118,48 @@ body {
   align-items: center;
 }
 
+.menu-btn.mobile {
+  display: none;
+}
+
+@media (max-width: 770px) {
+  .menu-btn.mobile {
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 16px;
+    width: 50px !important;
+    font-size: 20px;
+    height: auto;
+    z-index: 10;
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 16px;
+  width: 60px !important;
+  font-size: 20px;
+  height: auto;
+  z-index: 10;
+  display: flex;
+  border-radius: 50%;
+  border-width: 1px;
+
+  justify-content: center;
+  align-items: center;
+  transition: opacity 500ms;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.scroll-to-top.active {
+  opacity: 1;
+}
+
 /* ===== Contenedor Principal ===== */
 .container {
   width: 100%;
@@ -144,6 +188,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 64px;
+}
+
+@media (max-width: 770px) {
+  .header-container {
+    padding: 120px 64px 16px;
+    height: 100%;
+  }
 }
 
 /* ===== Navegación ===== */
@@ -176,6 +227,10 @@ body {
     transition: transform 0.3s ease-in-out;
   }
 
+  .header.open {
+    transform: translateX(0);
+  }
+
   .nav {
     flex-direction: column;
     min-height: 50svh;
@@ -185,6 +240,10 @@ body {
   .nav a {
     height: 50px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
   }
 
   .logo {
@@ -476,6 +535,10 @@ section.container {
     padding: 64px 20px;
     height: fit-content;
     flex-direction: column;
+  }
+
+  main {
+    gap: 20px;
   }
 }
 

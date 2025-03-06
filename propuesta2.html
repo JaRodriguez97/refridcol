@@ -10,7 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
     <link rel="stylesheet" href="./style2.css" />
-    <script src="./index.js"></script>
+    <!-- <script src="./index.js"></script> -->
     <link
       rel="shortcut icon"
       href="./img/LOGO-REFRIDCOL.png"
@@ -18,13 +18,20 @@
     />
   </head>
   <body>
+    <button class="menu-btn mobile" id="menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <a href="#main" class="scroll-to-top" >
+      <i class="fas fa-arrow-up"></i>
+    </a>
     <!-- Header -->
     <header class="header">
       <div class="container header-container">
         <nav class="nav" style="justify-content: left">
           <a href="#productos">Productos</a>
           <a href="#servicios">Servicios</a>
-          <a href="#contactanos">Contáctanos</a>
+          <a href="#consulta">Contáctanos</a>
         </nav>
         <a href="#" class="logo" style="justify-content: center; width: 80px">
           <img
@@ -41,7 +48,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container main-content">
+    <main class="container main-content" id="main">
       <div class="text-content">
         <h1>Refrigeración Industrial Eficiente y Sostenible</h1>
         <p>
@@ -155,7 +162,7 @@
 
     <!-- Banner action -->
     <!-- HTML -->
-    <section class="container column">
+    <section class="container column" id="servicios">
       <h3 class="titulo">
         Personalización total para adaptarnos a las necesidades específicas de
         su negocio.
@@ -531,4 +538,18 @@
       </section>
     </footer>
   </body>
+  <script>
+    let menuBtn = document.querySelector(".menu-btn");
+    let header = document.querySelector(".header");
+    let scrollToTop = document.querySelector(".scroll-to-top");
+
+    menuBtn.addEventListener("click", () => {
+      header.classList.toggle("open");
+    });
+
+    window.addEventListener("scroll", () => {
+      let scroll = window.scrollY;
+      scrollToTop.classList.toggle("active", scroll > 500);
+    });
+  </script>
 </html>
